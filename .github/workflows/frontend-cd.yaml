@@ -67,7 +67,7 @@ jobs:
           REACT_APP_MOVIE_API_URL: "http://localhost:5000"
         run: |
           cd starter/frontend
-          docker build --build-arg REACT_APP_MOVIE_API_URL=$REACT_APP_MOVIE_API_URL -t mp-frontend:latest .
+          docker build --file starter/frontend/Dockerfile --build-arg REACT_APP_MOVIE_API_URL=$REACT_APP_MOVIE_API_URL -t mp-frontend:latest starter/frontend
 
   push_to_ecr:
     name: Push to ECR

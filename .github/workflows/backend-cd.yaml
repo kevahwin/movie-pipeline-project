@@ -64,8 +64,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          cd starter/backend
-          docker build -t mp-backend:latest .
+          docker build --file starter/backend/Dockerfile -t mp-backend:latest starter/backend
+
 
   push_to_ecr:
     name: Push to ECR
