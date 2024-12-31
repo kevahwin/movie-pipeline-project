@@ -81,7 +81,7 @@ jobs:
       - name: Build and push Docker image
         env:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_REGION: "us-east-1"
         run: |
           cd starter/backend
           docker tag mp-backend:latest $ECR_REPOSITORY/backend:latest
@@ -93,7 +93,7 @@ jobs:
     needs: [push_to_ecr]
     env:
       ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_REGION: "us-east-1"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -103,7 +103,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: $AWS_REGION
 
       - name: Update kubeconfig
         run: aws eks update-kubeconfig --name cluster --region $AWS_REGION
