@@ -122,4 +122,6 @@ jobs:
           kustomize build . | kubectl apply -f -
       
       - name: Expose Frontend Service URL
-        run: kubectl get svc -A
+        run: |
+          FRONTEND_IP=$(kubectl get svc frontend -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+          echo "Frontend IP is: $FRONTEND_IP"
