@@ -1,9 +1,11 @@
-name: Movie Picture Frontend CI
+name: Movie Picture - Frontend CI
 
 on:
   pull_request:
     branches:
       - main
+    paths:
+      - 'starter/frontend/**'
   workflow_dispatch:
 
 jobs:
@@ -23,15 +25,19 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('starter/frontend/**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd starter/frontend
+          npm ci
 
       - name: Run lint
-        run: npm run lint
+        run: |
+          cd starter/frontend
+          npm run lint
 
   test:
     name: Test
@@ -49,15 +55,19 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('starter/frontend/**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd starter/frontend
+          npm ci
 
       - name: Run tests
-        run: npm run test
+        run: |
+          cd starter/frontend
+          npm run test
 
   build:
     name: Build
@@ -76,12 +86,16 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('starter/frontend/**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd starter/frontend
+          npm ci
 
       - name: Build application
-        run: npm run build
+        run: |
+          cd starter/frontend
+          npm run build
