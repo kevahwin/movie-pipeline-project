@@ -117,4 +117,4 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           cd starter/backend/k8s
-          kustomize build starter/backend/k8s | kubectl apply -f -
+          kustomize build . | kubectl apply -f -
