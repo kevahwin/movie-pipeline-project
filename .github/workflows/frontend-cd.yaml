@@ -120,3 +120,6 @@ jobs:
         run: |
           cd starter/frontend/k8s
           kustomize build . | kubectl apply -f -
+      
+      - name: Expose Frontend Service URL
+        run: kubectl get svc -A

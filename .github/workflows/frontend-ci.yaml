@@ -95,7 +95,9 @@ jobs:
           cd starter/frontend
           npm ci
 
-      - name: Build application
+      - name: Build Docker image for frontend
+        env:
+          REACT_APP_MOVIE_API_URL: "http://localhost:5000"
         run: |
           cd starter/frontend
-          npm run build
+          docker build --build-arg REACT_APP_MOVIE_API_URL=$REACT_APP_MOVIE_API_URL -t mp-frontend:latest .
