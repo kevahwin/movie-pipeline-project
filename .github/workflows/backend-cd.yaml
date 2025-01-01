@@ -112,7 +112,7 @@ jobs:
       - name: Set image tag
         run: |
           cd starter/backend/k8s
-          kustomize edit set image frontend=$ECR_REPOSITORY/frontend:latest
+          kustomize edit set image backend=$ECR_REPOSITORY/backend:latest
 
       - name: Deploy to Kubernetes
         run: |
