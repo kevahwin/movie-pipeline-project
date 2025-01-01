@@ -12,7 +12,7 @@ In the `starter` folder, you'll find 2 folders, one named `frontend` and one nam
 ## Deliverables
 
 ### Frontend
-
+![React Frontend](screenshots/frontend.png)
 1. A Continuous Integration workflow that:
    1. Runs on `pull_requests` against the `main` branch,only when code in the frontend application changes.
    2. Is able to be run on-demand (i.e. manually without needing to push code)
@@ -31,7 +31,7 @@ In the `starter` folder, you'll find 2 folders, one named `frontend` and one nam
       2. The tag applied to the image should be the git SHA of the commit that triggered the build
 
 ### Backend
-
+![Flask API](screenshots/backend.png)
 1. A Continuous Integration workflow that:
    1. Runs on `pull_requests` against the `main` branch,only when code in the frontend application changes.
    2. Is able to be run on-demand (i.e. manually without needing to push code)
